@@ -23,6 +23,9 @@ switch ($page) {
         include_once('models/auth/validate_code.php');
         include_once('views/auth/validate_code.php');
         break;
+    case 'trang-chu':
+        handleImportServer('block/home.php','block/home.php','Trang chủ');
+        break;
     case 'danh-sach-nguoi-dung':
         handleImportServer('user/index.php', 'user/read.php', 'Danh sách người dùng');
         break;
