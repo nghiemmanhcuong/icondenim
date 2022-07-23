@@ -47,4 +47,13 @@ switch ($page) {
     case 'xoa-san-pham':
         handleImportServer('','product/delete.php');
         break;
+    case 'don-hang':
+        handleImportServer('orders/index.php','orders/index.php','Đơn hàng');
+        break;
+    case 'trang-thai-don-hang':
+        handleImportServer('orders/edit_status.php','orders/edit_status.php','Trạng thái đơn hàng');
+        break;
+    case 'chi-tiet-don-hang':
+        handleImportServer('orders/order_detail.php','orders/order_detail.php','Chi tiết đơn hàng');
+        break;
 }
