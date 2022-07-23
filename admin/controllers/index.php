@@ -56,4 +56,7 @@ switch ($page) {
     case 'chi-tiet-don-hang':
         handleImportServer('orders/order_detail.php','orders/order_detail.php','Chi tiết đơn hàng');
         break;
+    case 'them-anh-club':
+        handleImportServer('club/add.php','club/add.php','Thêm ảnh club');
+        break;
 }
