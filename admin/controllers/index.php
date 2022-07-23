@@ -56,4 +56,28 @@ switch ($page) {
     case 'chi-tiet-don-hang':
         handleImportServer('orders/order_detail.php','orders/order_detail.php','Chi tiết đơn hàng');
         break;
+    case 'them-bai-viet':
+        handleImportServer('blog/add.php','blog/add.php','Thêm bài viết');
+        break;
+    case 'danh-sach-bai-viet':
+        handleImportServer('blog/index.php','blog/read.php','Danh sách bài viết');
+        break;
+    case 'sua-bai-viet':
+        handleImportServer('blog/edit.php','blog/edit.php','Sửa bài viết');
+        break;
+    case 'xoa-bai-viet':
+        handleImportServer('','blog/delete.php');
+        break;
+    case 'danh-muc-bai-viet':
+        handleImportServer('blog/blog_category/index.php','blog/blog_category/read.php','Danh mục bài viết');
+        break;
+    case 'them-danh-muc-bai-viet':
+        handleImportServer('blog/blog_category/add.php','blog/blog_category/add.php','Thêm danh mục bài viết');
+        break;
+    case 'sua-danh-muc-bai-viet':
+        handleImportServer('blog/blog_category/edit.php','blog/blog_category/edit.php','Sửa danh mục bài viết');
+        break;
+    case 'xoa-danh-muc-bai-viet':
+        handleImportServer('','blog/blog_category/delete.php');
+        break;
 }
