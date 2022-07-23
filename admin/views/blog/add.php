@@ -1,3 +1,9 @@
+<div class="content">
+    <form method="post" class="form-add" style="width:60%;" enctype="multipart/form-data">
+        <h3 class="text-center fw-bold">Thêm bài viết mới</h3>
+        <!-- message -->
+        <?php if(isset($success)):?>
+        <div class="alert alert-success position-relative">
             <?=$success?>
             <a href="?p=them-bai-viet">
                 <i class="fa-solid fa-circle-xmark fs-5 position-absolute"></i>
