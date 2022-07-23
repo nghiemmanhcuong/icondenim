@@ -80,4 +80,7 @@ switch ($page) {
     case 'xoa-danh-muc-bai-viet':
         handleImportServer('','blog/blog_category/delete.php');
         break;
+    case 'them-anh-club':
+        handleImportServer('club/add.php','club/add.php','Thêm ảnh club');
+        break;
 }
