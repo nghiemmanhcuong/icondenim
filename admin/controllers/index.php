@@ -35,4 +35,16 @@ switch ($page) {
     case 'xoa-nguoi-dung':
         handleImportServer('', 'user/delete.php',);
         break;
+    case 'danh-sach-san-pham':
+        handleImportServer('product/index.php','product/read.php','Danh sách sản phẩm');
+        break;
+    case 'them-san-pham':
+        handleImportServer('product/add.php','product/add.php','Thêm sản phẩm');
+        break;
+    case 'sua-san-pham':
+        handleImportServer('product/edit.php','product/edit.php','Sửa sản phẩm');
+        break;
+    case 'xoa-san-pham':
+        handleImportServer('','product/delete.php');
+        break;
 }
