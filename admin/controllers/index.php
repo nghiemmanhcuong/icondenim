@@ -23,6 +23,9 @@ switch ($page) {
         include_once('models/auth/validate_code.php');
         include_once('views/auth/validate_code.php');
         break;
+    case 'trang-chu':
+        handleImportServer('block/home.php','block/home.php','Trang chủ');
+        break;
     case 'danh-sach-nguoi-dung':
         handleImportServer('user/index.php', 'user/read.php', 'Danh sách người dùng');
         break;
@@ -46,6 +49,18 @@ switch ($page) {
         break;
     case 'xoa-san-pham':
         handleImportServer('','product/delete.php');
+        break;
+    case 'mau-san-pham':
+        handleImportServer('product/color.php','product/color.php','Màu sản phẩm');
+        break;
+    case 'kich-co-san-pham':
+        handleImportServer('product/size.php','product/size.php','Kích cỡ sản phẩm');
+        break;
+    case 'anh-san-pham':
+        handleImportServer('product/images.php','product/images.php','Ảnh sản phẩm');
+        break;
+    case 'them-vao-kho':
+        handleImportServer('product/warehouse.php','product/warehouse.php','Thêm vào kho');
         break;
     case 'don-hang':
         handleImportServer('orders/index.php','orders/index.php','Đơn hàng');
@@ -103,5 +118,7 @@ switch ($page) {
         break;
     case 'xoa-nhom-san-pham':
         handleImportServer('','category/category_group/delete.php');
+    case 'them-anh-club':
+        handleImportServer('club/add.php','club/add.php','Thêm ảnh club');
         break;
 }
