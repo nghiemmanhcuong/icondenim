@@ -80,4 +80,28 @@ switch ($page) {
     case 'xoa-danh-muc-bai-viet':
         handleImportServer('','blog/blog_category/delete.php');
         break;
+     case 'danh-sach-danh-muc':
+        handleImportServer('category/index.php','category/read.php','Danh sách danh mục');
+        break;
+    case 'them-danh-muc':
+        handleImportServer('category/add.php','category/add.php','Thêm danh mục');
+        break;
+    case 'sua-danh-muc':
+        handleImportServer('category/edit.php','category/edit.php','Sửa danh mục');
+        break;
+    case 'xoa-danh-muc':
+        handleImportServer('','category/delete.php');
+        break;
+    case 'nhom-san-pham':
+        handleImportServer('category/category_group/index.php','category/category_group/read.php','Nhóm sản phẩm');
+        break;
+    case 'them-nhom-san-pham':
+        handleImportServer('category/category_group/add.php','category/category_group/add.php','Thêm nhóm sản phẩm');
+        break;
+    case 'sua-nhom-san-pham':
+        handleImportServer('category/category_group/edit.php','category/category_group/edit.php','Sửa nhóm sản phẩm');
+        break;
+    case 'xoa-nhom-san-pham':
+        handleImportServer('','category/category_group/delete.php');
+        break;
 }
