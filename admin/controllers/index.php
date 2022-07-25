@@ -50,6 +50,18 @@ switch ($page) {
     case 'xoa-san-pham':
         handleImportServer('','product/delete.php');
         break;
+    case 'mau-san-pham':
+        handleImportServer('product/color.php','product/color.php','Màu sản phẩm');
+        break;
+    case 'kich-co-san-pham':
+        handleImportServer('product/size.php','product/size.php','Kích cỡ sản phẩm');
+        break;
+    case 'anh-san-pham':
+        handleImportServer('product/images.php','product/images.php','Ảnh sản phẩm');
+        break;
+    case 'them-vao-kho':
+        handleImportServer('product/warehouse.php','product/warehouse.php','Thêm vào kho');
+        break;
     case 'don-hang':
         handleImportServer('orders/index.php','orders/index.php','Đơn hàng');
         break;
