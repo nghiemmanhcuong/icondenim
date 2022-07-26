@@ -165,3 +165,26 @@ function handleDateTime($dateTime,$format = false){
     }
     return $dateTime;
 }
+
+function getTotalSales($date){
+    global $conn;
+    $date = explode("-",$date);
+    $year = $date[0];
+    $month = $date[1];
+
+    $sql = "SELECT sum(total_price) as total_price FROM orders WHERE  year(created_at)=? AND month(created_at)=? AND status='Đã thanh toán'";
+    $result = query($sql,[$year,$month])->fetch(PDO::FETCH_ASSOC);
+    return $result['total_price'];
+}
+
+function getTotalSalesDay($date){
+    global $conn;
+    $date = explode("-",$date);
+    $year = $date[0];
+    $month = $date[1];
+    $day = $date[2];
+
+    $sql = "SELECT sum(total_price) as total_price FROM orders WHERE  year(created_at)=? AND month(created_at)=? AND day(created_at)=? AND status='Đã thanh toán'";
+    $result = query($sql,[$year,$month,$day])->fetch(PDO::FETCH_ASSOC);
+    return $result['total_price'];
+}
