@@ -1,7 +1,20 @@
 <div class="content">
     <div>
-        <h2 class="mt-3 fw-bold">Thống kê doanh số 5 tháng gần đây</h2>
-        <div class="sales-chart" id="sales-chart" style="height: 300px;"></div>
+        <h2 class="fw-bold">Thống kê doanh số</h2>
+        <select class="form-select mb-3" name="sales" id="sales" style="width:200px;">
+            <option <?=(!isset($_GET['sales']) || $_GET['sales'] == 'year' ? 'selected' : '')?> value="?p=trang-chu&sales=year">1
+                năm qua
+            </option>
+            <option <?=(isset($_GET['sales']) && $_GET['sales'] == 'six_months' ? 'selected' : '')?>
+                value="?p=trang-chu&sales=six_months">6
+                tháng qua</option>
+            <option <?=(isset($_GET['sales']) && $_GET['sales'] == 'most_recent_month' ? 'selected' : '')?>
+                value="?p=trang-chu&sales=most_recent_month">1 tháng gần đây</option>
+            <option <?=(isset($_GET['sales']) && $_GET['sales'] == 'week_past' ? 'selected' : '')?>
+                value="?p=trang-chu&sales=week_past">1
+                tuần qua</option>
+        </select>
+        <div class="sales-chart" id="doanhso" style="height: 300px;"></div>
     </div>
     <div class="mt-3 row">
         <div class="today-order col-6 border-end">
@@ -26,7 +39,7 @@
                         <td class="border border-light text-center fw-normal"><?='0'.$order['customer_phone']?></td>
                         <td class="border border-light text-center fw-normal">
                             <a href="?p=chi-tiet-don-hang&order_id=<?=$order['id']?>" style="font-size:12px;"
-                            class="btn btn-primary">Chi tiết</a>
+                                class="btn btn-primary">Chi tiết</a>
                         </td>
                     </tr>
                     <?php endforeach;?>
@@ -61,7 +74,7 @@
                         <td class="border border-light text-center fw-normal"><?=$count?></td>
                         <td class="border border-light text-center fw-normal">
                             <img src="../uploads/<?=$user['avatar']?>" class="rounded-circle"
-                            style="height:40px;width:40px;">
+                                style="height:40px;width:40px;">
                         </td>
                         <td class="border border-light text-center fw-normal"><?=$user['name']?></td>
                         <td class="border border-light text-center fw-normal"><?=$user['email']?></td>
@@ -77,17 +90,19 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <script>
-    new Morris.Area({
-    element: 'sales-chart',
-    data: [
-        { thang: '<?=str_replace('0','',$curr_date_arr[1]-3)?>', doanhso: 4059683 },
-        { thang: '<?=str_replace('0','',$curr_date_arr[1]-2)?>', doanhso: 7049362 },
-        { thang: '<?=str_replace('0','',$curr_date_arr[1]-1)?>', doanhso: 5039500 },
-        { thang: '<?=str_replace('0','',$curr_date_arr[1])?>', doanhso: <?=$total_price['total_price']?> },
-        { thang: '5', doanhso: 3850498 },
-    ],
-    xkey: 'thang',
-    ykeys: ['doanhso'],
-    labels: ['doanhso']
-    });
+const salesData = <?=json_encode(array_reverse($sales_data))?>;
+new Morris.Area({
+    element: 'doanhso',
+    data: salesData,
+    xkey: 'year',
+    ykeys: ['value'],
+    labels: ['Doanh số'],
+});
+const sales = document.getElementById('sales');
+if (sales) {
+    sales.onchange = () => {
+        sales.options[sales.selectedIndex].value && (window.location = sales.options[sales.selectedIndex]
+            .value);
+    }
+}
 </script>
