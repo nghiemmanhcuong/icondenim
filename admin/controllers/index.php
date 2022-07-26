@@ -121,4 +121,13 @@ switch ($page) {
     case 'them-anh-club':
         handleImportServer('club/add.php','club/add.php','Thêm ảnh club');
         break;
+    case 'lien-he':
+        handleImportServer('contact/index.php','contact/index.php','Liên hệ');
+        break;
+    case 'chi-tiet-phan-hoi':
+        handleImportServer('contact/detail.php','contact/detail.php','Chi tiết liên hệ');
+        break;
+    case 'tra-loi-phan-hoi':
+        handleImportServer('contact/answer.php','contact/answer.php','Trả lời liên hệ');
+        break;
 }
