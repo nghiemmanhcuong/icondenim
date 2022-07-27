@@ -16,7 +16,9 @@ if(isset($_SERVER['PATH_INFO'])){
 }
 
 switch ($folder) {
-    
+    case '':
+        handleImportClient('home/index.php','home/index.php','ICON DENIM');
+        break;
     default:
         include_once('views/errors/404.php');
         break;
