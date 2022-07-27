@@ -218,4 +218,30 @@ function handleImportClient($view=null, $model=null,$web_title=''){
     include_once('views/block/cart.php');
     include_once('views/block/footer.php');
 }
+
+function handleMenu($menu, $parent = 0, $is_sub = false){
+    $sub_menu = [];
+    $parent_id_arr = [];
+    if(!empty($menu)){
+        foreach ($menu as $key => $item) {
+            $parent_id_arr[] = $item['parent_id'];
+            if($parent == $item['parent_id']){
+                $sub_menu[] = $item;
+                unset($menu[$key]);
+            }
+        }
+    }
+
+    if(!empty($sub_menu)){
+        echo ($is_sub) ? '<ul class="sub-dropdown">' : '<ul class="dropdown">';
+        foreach ($sub_menu as $item) {
+            $icon = (in_array($item['id'],$parent_id_arr)) ? '<i class="fa-solid fa-angle-right"></i>' :'';
+            echo '<li class="dropdown-item">';
+            echo '<a href="'.WEB_ROOT.'/collections/'.$item['slug'].'" class="dropdown-link">'.$item['name'].$icon.'</a>';
+            handleMenu($menu,$item['id'],$is_sub=true);
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
+
 }
