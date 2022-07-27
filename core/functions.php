@@ -187,9 +187,6 @@ function getTotalSalesDay($date){
     $sql = "SELECT sum(total_price) as total_price FROM orders WHERE  year(created_at)=? AND month(created_at)=? AND day(created_at)=? AND status='Đã thanh toán'";
     $result = query($sql,[$year,$month,$day])->fetch(PDO::FETCH_ASSOC);
     return $result['total_price'];
-}
-
-// client
 
 function getSlugUrl() {
     if(isset($_SERVER['PATH_INFO'])){
@@ -246,4 +243,5 @@ function handleMenu($menu, $parent = 0, $is_sub = false){
         }
         echo '</ul>';
     }
+
 }
