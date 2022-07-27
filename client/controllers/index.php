@@ -16,7 +16,32 @@ if(isset($_SERVER['PATH_INFO'])){
 }
 
 switch ($folder) {
-    
+    case 'account':
+        switch ($detail) {
+            case 'dang-nhap':
+                handleImportClient('account/login.php','account/login.php','Đăng nhập');
+                break;
+            case 'dang-ky':
+                handleImportClient('account/register.php','account/register.php','Tạo tài khoản');
+                break;
+            case 'khoi-phuc-tai-khoan':
+                handleImportClient('account/recovery_pass.php','account/recovery_pass.php','Khôi phục tài khoản');
+                break;
+            case 'info':
+                handleImportClient('account/info.php','account/info.php','Tài khoản của bạn');
+                break;
+            case 'check-code':
+                handleImportClient('account/check_code.php','account/check_code.php','Khôi phục tài khoản');
+                break;
+            case 'doi-mat-khau':
+                handleImportClient('account/change_pass.php','account/change_pass.php','Khôi phục tài khoản');
+                break;
+            default:
+                include_once('views/errors/404.php');
+                break;
+        }
+        break;
+        
     default:
         include_once('views/errors/404.php');
         break;
