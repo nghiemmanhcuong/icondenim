@@ -18,3 +18,6 @@ define('IMG_ROOT',str_replace('client','uploads/',WEB_ROOT));
 define('SERVER_ROOT',str_replace('client','admin',WEB_ROOT));
 
 require_once('controller/index.php');
+
+?>
+
