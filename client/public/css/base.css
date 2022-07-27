@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
+:root {
+    --topbar-height: 30px;
+}
+
 *,
 *::before,
 *::after {
@@ -69,3 +73,49 @@ a {
     margin-left: auto;
     max-width: 1250px;
 }
+
+.section {
+    margin-top: 30px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title {
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.section-desc {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* swiper slide */
+.swiper-button-prev,
+.swiper-button-next {
+    color: #000 !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 34px;
+}
+
+.swiper-button-prev {
+    left: 0 !important;
+}
+
+.swiper-button-next {
+    right: 0 !important;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+    pointer-events: auto !important;
+}
+
+/* fixed */
