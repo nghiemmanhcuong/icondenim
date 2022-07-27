@@ -5,6 +5,7 @@ require_once('../core/functions.php');
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
+
 const DIR_ROOT = __DIR__;
 if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
     $web_root = 'https://'.$_SERVER['HTTP_HOST'];
@@ -17,4 +18,6 @@ define('IMG_ROOT',str_replace('client','uploads/',WEB_ROOT));
 define('SERVER_ROOT',str_replace('client','admin',WEB_ROOT));
 
 require_once('controller/index.php');
+
 ?>
+
