@@ -244,4 +244,110 @@ function handleMenu($menu, $parent = 0, $is_sub = false){
         echo '</ul>';
     }
 
+function getProductImages($product_id) {
+    global $conn;
+    $sql = "SELECT * FROM product_images WHERE product_id=?";
+    $product_images = query($sql,[$product_id])->fetchall(PDO::FETCH_ASSOC);
+    return $product_images;
+}
+
+function getStarsNum($product_reviews) {
+    $one_star = 0;
+    $two_star = 0;
+    $three_star = 0;
+    $four_star = 0;
+    $five_star = 0;
+    $total_star = 0;
+
+    foreach ($product_reviews as $review) {
+        if($review['stars'] == 1){
+            $one_star++;
+        }
+
+        if($review['stars'] == 2){
+            $two_star++;
+        }
+
+        if($review['stars'] == 3){
+            $three_star++;
+        }
+
+        if($review['stars'] == 4){
+            $four_star++;
+        }
+
+        if($review['stars'] == 5){
+            $five_star++;
+        }
+
+        $total_star += $review['stars'];
+    }
+
+    if(count($product_reviews) > 0){
+        $point = $total_star / count($product_reviews);
+        $point = round($point,1,PHP_ROUND_HALF_UP);
+    }else {
+        $point = 0;
+    }
+    
+    return [
+        'one_star'=>$one_star,
+        'two_star'=>$two_star,
+        'three_star'=>$three_star,
+        'four_star'=>$four_star,
+        'five_star'=>$five_star,
+        'total_star'=>$total_star,
+        'point'=>$point,
+    ];
+}
+
+function getevaluate($product_id) {
+    global $conn;
+    $sql = "SELECT stars FROM product_reviews WHERE product_id=?";
+    $stars = query($sql,[$product_id])->fetchAll(PDO::FETCH_ASSOC);
+
+    $point = getStarsNum($stars);
+
+    return [
+        'point'=>$point['point'],
+        'evaluate'=>count($stars),
+    ];
+}
+
+function getWarehouse($product_id){
+    global $conn;
+    $colors = array();
+    $color_id = array();
+    $sizes = array();
+    $size_id = array();
+
+    $sql = "SELECT color,size FROM product_warehouse WHERE product_id=?";
+    $warehouse = query($sql,[$product_id]);
+
+    foreach ($warehouse as $item) {
+        $color_id[] = $item['color'];
+        $size_id[] = $item['size'];
+    }
+
+    $color_id = array_unique($color_id);
+    $size_id = array_unique($size_id);
+
+    foreach ($color_id as $id) {
+        $sql = "SELECT * FROM colors WHERE id=?";
+        $color = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
+        array_push($colors, $color);
+    }
+
+    foreach ($size_id as $id) {
+        $sql = "SELECT * FROM sizes WHERE id=?";
+        $size = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
+        array_push($sizes, $size);
+    }
+
+    return [
+        'color' => $colors,
+        'size' => $sizes,
+    ];
+}
+}
 }
