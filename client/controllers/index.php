@@ -45,6 +45,12 @@ switch ($folder) {
     case '':
         handleImportClient('home/index.php','home/index.php','ICON DENIM');
         break;
+    case 'collections':
+        handleImportClient('collections/index.php','collections/index.php');
+        break;
+    case 'products':
+        handleImportClient('products/index.php','products/index.php');
+        break;
     default:
         include_once('views/errors/404.php');
         break;
