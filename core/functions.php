@@ -352,3 +352,16 @@ function getWarehouse($product_id){
 }
 
 }
+
+function getSqlFilterSizeColor($size_id=null,$color_id=null){
+
+    if(isset($color_id) && isset($size_id)){
+        $sql_filter = "SELECT product_id FROM product_warehouse WHERE color=$color_id AND size=$size_id";
+    }else if(isset($color_id)) {
+        $sql_filter = "SELECT product_id FROM product_warehouse WHERE color=$color_id";
+    }else if(isset($size_id)) {
+        $sql_filter = "SELECT product_id FROM product_warehouse WHERE size=$size_id";
+    }
+
+    return $sql_filter;
+}
