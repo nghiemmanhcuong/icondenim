@@ -364,4 +364,14 @@ function getSqlFilterSizeColor($size_id=null,$color_id=null){
     }
 
     return $sql_filter;
+} 
+
+function getAcountType($account_type){
+    if($account_type == 'regular'){
+        return 'Thường <i class="fa-solid fa-user"></i>';
+    }else if($account_type == 'silver'){
+        return 'Bạc <i class="fa-solid fa-user-shield"></i> (Đặc quyền ưu đãi giảm 5% khi mua hành nguyên giá) ';
+    }else if($account_type == 'gold'){
+        return 'Khách hàng thân thiết <i class="fa-solid fa-crown" style="color:orange"></i> (Đặc quyền ưu đãi giảm 10% khi mua hành nguyên giá)';
+    }
 }

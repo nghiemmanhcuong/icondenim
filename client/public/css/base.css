@@ -915,3 +915,11 @@ a {
     display: inline-block;
     margin-right: 10px;
 }
+.auth-alert-close,
+.product-alert-close {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
