@@ -251,3 +251,7 @@
     color: #333;
     width: 150px;
 }
+.cart-button > a:hover::after,
+.products-submit:hover::after {
+    right: -100%;
+}

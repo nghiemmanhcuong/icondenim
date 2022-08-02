@@ -5,14 +5,14 @@ if(empty($_GET['order_id'])){
     $order_id = $_GET['order_id'];
 }
 
-function getColor($color_id) {
+function getColorProduct($color_id) {
     $sql = "SELECT name FROM colors WHERE id=?";
     $color = query($sql,[$color_id])->fetch(PDO::FETCH_ASSOC);
 
     return $color['name'];
 }
 
-function getSize($size_id) {
+function getSizeProduct($size_id) {
     $sql = "SELECT name FROM sizes WHERE id=?";
     $size = query($sql,[$size_id])->fetch(PDO::FETCH_ASSOC);
 
@@ -35,8 +35,8 @@ $order_detail_product = query($sql,[$order_id])->fetchAll(PDO::FETCH_ASSOC);
 $product_list = array();
 foreach ($order_detail_product as $item) {
     $product = getProduct($item['product_id']);
-    $color = getColor($item['color_id']);
-    $size = getSize($item['size_id']);
+    $color = getColorProduct($item['color_id']);
+    $size = getSizeProduct($item['size_id']);
 
     $product_item = [
         'color'=>$color,
