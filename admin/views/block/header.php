@@ -345,8 +345,6 @@ th,td {
 .order-detail-item-text {
     font-weight: 500;
 }
-
-
     </style>
 </head>
 
