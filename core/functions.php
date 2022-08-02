@@ -187,4 +187,191 @@ function getTotalSalesDay($date){
     $sql = "SELECT sum(total_price) as total_price FROM orders WHERE  year(created_at)=? AND month(created_at)=? AND day(created_at)=? AND status='Đã thanh toán'";
     $result = query($sql,[$year,$month,$day])->fetch(PDO::FETCH_ASSOC);
     return $result['total_price'];
+
+function getSlugUrl() {
+    if(isset($_SERVER['PATH_INFO'])){
+        $url_arr = explode("/", $_SERVER['PATH_INFO']);
+        $url_arr = array_filter($url_arr);
+        $url_arr = array_values($url_arr);
+        
+        if(isset($url_arr[1])) {
+           return $url_arr[1];
+        }
+    }
+
+    return null;
+}
+
+function handleImportClient($view=null, $model=null,$web_title=''){
+    require_once('../core/variables.php');
+    $slug = getSlugUrl();
+    if(!empty($model)){
+        require_once('models/'.$model);
+    }
+    include_once('views/block/header.php');
+    include_once('views/block/fixed.php');
+    include_once('views/block/topbar.php');
+    include_once('views/block/navigation.php');
+    if(!empty($view)){
+        require_once('views/'.$view);
+    }
+    include_once('views/block/cart.php');
+    include_once('views/block/footer.php');
+}
+
+function handleMenu($menu, $parent = 0, $is_sub = false){
+    $sub_menu = [];
+    $parent_id_arr = [];
+    if(!empty($menu)){
+        foreach ($menu as $key => $item) {
+            $parent_id_arr[] = $item['parent_id'];
+            if($parent == $item['parent_id']){
+                $sub_menu[] = $item;
+                unset($menu[$key]);
+            }
+        }
+    }
+
+    if(!empty($sub_menu)){
+        echo ($is_sub) ? '<ul class="sub-dropdown">' : '<ul class="dropdown">';
+        foreach ($sub_menu as $item) {
+            $icon = (in_array($item['id'],$parent_id_arr)) ? '<i class="fa-solid fa-angle-right"></i>' :'';
+            echo '<li class="dropdown-item">';
+            echo '<a href="'.WEB_ROOT.'/collections/'.$item['slug'].'" class="dropdown-link">'.$item['name'].$icon.'</a>';
+            handleMenu($menu,$item['id'],$is_sub=true);
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
+
+function getProductImages($product_id) {
+    global $conn;
+    $sql = "SELECT * FROM product_images WHERE product_id=?";
+    $product_images = query($sql,[$product_id])->fetchall(PDO::FETCH_ASSOC);
+    return $product_images;
+}
+
+function getStarsNum($product_reviews) {
+    $one_star = 0;
+    $two_star = 0;
+    $three_star = 0;
+    $four_star = 0;
+    $five_star = 0;
+    $total_star = 0;
+
+    foreach ($product_reviews as $review) {
+        if($review['stars'] == 1){
+            $one_star++;
+        }
+
+        if($review['stars'] == 2){
+            $two_star++;
+        }
+
+        if($review['stars'] == 3){
+            $three_star++;
+        }
+
+        if($review['stars'] == 4){
+            $four_star++;
+        }
+
+        if($review['stars'] == 5){
+            $five_star++;
+        }
+
+        $total_star += $review['stars'];
+    }
+
+    if(count($product_reviews) > 0){
+        $point = $total_star / count($product_reviews);
+        $point = round($point,1,PHP_ROUND_HALF_UP);
+    }else {
+        $point = 0;
+    }
+    
+    return [
+        'one_star'=>$one_star,
+        'two_star'=>$two_star,
+        'three_star'=>$three_star,
+        'four_star'=>$four_star,
+        'five_star'=>$five_star,
+        'total_star'=>$total_star,
+        'point'=>$point,
+    ];
+}
+
+function getevaluate($product_id) {
+    global $conn;
+    $sql = "SELECT stars FROM product_reviews WHERE product_id=?";
+    $stars = query($sql,[$product_id])->fetchAll(PDO::FETCH_ASSOC);
+
+    $point = getStarsNum($stars);
+
+    return [
+        'point'=>$point['point'],
+        'evaluate'=>count($stars),
+    ];
+}
+
+function getWarehouse($product_id){
+    global $conn;
+    $colors = array();
+    $color_id = array();
+    $sizes = array();
+    $size_id = array();
+
+    $sql = "SELECT color,size FROM product_warehouse WHERE product_id=?";
+    $warehouse = query($sql,[$product_id]);
+
+    foreach ($warehouse as $item) {
+        $color_id[] = $item['color'];
+        $size_id[] = $item['size'];
+    }
+
+    $color_id = array_unique($color_id);
+    $size_id = array_unique($size_id);
+
+    foreach ($color_id as $id) {
+        $sql = "SELECT * FROM colors WHERE id=?";
+        $color = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
+        array_push($colors, $color);
+    }
+
+    foreach ($size_id as $id) {
+        $sql = "SELECT * FROM sizes WHERE id=?";
+        $size = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
+        array_push($sizes, $size);
+    }
+
+    return [
+        'color' => $colors,
+        'size' => $sizes,
+    ];
+}
+}
+
+}
+
+function getSqlFilterSizeColor($size_id=null,$color_id=null){
+
+    if(isset($color_id) && isset($size_id)){
+        $sql_filter = "SELECT product_id FROM product_warehouse WHERE color=$color_id AND size=$size_id";
+    }else if(isset($color_id)) {
+        $sql_filter = "SELECT product_id FROM product_warehouse WHERE color=$color_id";
+    }else if(isset($size_id)) {
+        $sql_filter = "SELECT product_id FROM product_warehouse WHERE size=$size_id";
+    }
+
+    return $sql_filter;
+} 
+
+function getAcountType($account_type){
+    if($account_type == 'regular'){
+        return 'Thường <i class="fa-solid fa-user"></i>';
+    }else if($account_type == 'silver'){
+        return 'Bạc <i class="fa-solid fa-user-shield"></i> (Đặc quyền ưu đãi giảm 5% khi mua hành nguyên giá) ';
+    }else if($account_type == 'gold'){
+        return 'Khách hàng thân thiết <i class="fa-solid fa-crown" style="color:orange"></i> (Đặc quyền ưu đãi giảm 10% khi mua hành nguyên giá)';
+    }
 }

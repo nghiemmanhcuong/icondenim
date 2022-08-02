@@ -1,0 +1,253 @@
+/* popular category */
+.category-popular {
+    display: grid;
+    grid-template-rows: 500px 500px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.category-popular-item {
+    position: relative;
+}
+
+.category-popular-item:nth-child(4){
+    grid-column: -4/-2;
+}
+
+.category-popular-item:nth-child(4) .category-popular-content-name,
+.category-popular-item:nth-child(5) .category-popular-content-name{
+    display: none;
+}
+
+.category-popular-image {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-popular-image > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.product-image-overlay,
+.blog-image-overlay,
+.category-popular-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0.1));
+}
+
+.category-popular-content {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: max-content;
+}
+
+.category-popular-content-name {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: rgb(0 0 0) 2px 5px 30px;
+    margin-bottom: 10px;
+}
+
+.button-all,
+.category-popular-content-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 8px 35px;
+    border: 2px solid #000;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    transition:all 0.3s ease;
+}
+
+.button-all:hover,
+.category-popular-content-btn:hover {
+    border: 2px solid #fff;
+    background-color: #000;
+}
+
+.button-all:hover > a,
+.category-popular-content-btn:hover > a {
+    color: #fff;
+}
+
+.button-all {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: max-content;
+}
+/* new product */
+.blog-section,
+.category-trent-section,
+.new-product {
+    background-color: #f7f5f3;
+    padding: 30px 0px 35px;
+}
+
+/* auth */
+.auth-info,
+.auth {
+    padding-top: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 50px;
+    border-top:1px solid #ddd;
+}
+
+.auth-form {
+    width: 500px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    max-width: 100%;
+}
+
+.auth-form-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.auth-form-group {
+    margin-bottom: 10px;
+}
+
+.auth-form-label {
+    padding-bottom: 5px;
+    font-size: 14px;
+    display:block;
+    font-weight: 500;
+}
+
+.auth-form-label > span {
+    color: red;
+}
+
+.auth-form-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.auth-form-input {
+    width: 100%;
+    padding: 8px 5px;
+    border:1px solid #ddd;
+    border-radius:3px;
+    font-size: 13px;
+}
+
+.auth-form-input::placeholder{
+    font-size: 11px;
+    color: #ddd;
+}
+
+.auth-form-input:focus {
+    outline: 1px solid blue;
+}
+
+.auth-form-btn {
+    width: 100%;
+    padding: 7px 0;
+    background-color: #000;
+    color: #fff;
+    text-transform:uppercase;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}           
+
+.auth-form-forgot-pass {
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-bottom:1px solid #ddd;
+    text-align: center;
+    font-style:italic;
+    font-size: 13px;
+    color:#555;
+}
+
+.auth-form-register-link {
+    color: blue;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 15px;
+    color: #333;
+}
+
+.auth-form-register-link > a:hover {
+    text-decoration:underline;
+}
+
+.auth-form-error {
+    font-size: 10px;
+    color: red;
+}
+
+.auth-info-title {
+    font-size: 28px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #000;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.auth-info-container{
+    margin-top: 35px;
+}
+
+.auth-info-detail-title,
+.auth-info-account-title{
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+.auth-info-account-item {
+    margin-bottom: 10px;
+}
+
+.auth-info-account-link{
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.auth-info-account-link > i {
+    font-size: 6px;
+    padding-right: 5px;
+}
+
+.auth-info-detail-title {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.auth-info-detail-item{
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.auth-info-detail-item > span {
+    display: inline-block;
+    font-weight: 600;
+    color: #333;
+    width: 150px;
+}

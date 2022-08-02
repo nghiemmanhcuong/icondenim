@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="./public/css/grid.css">
     <link rel="stylesheet" href="./public/css/main.css">
     <link rel="stylesheet" href="./public/css/responsive.css">
+    <link rel="stylesheet" href="<?=WEB_ROOT?>/public/css/base.css">
+    <link rel="stylesheet" href="<?=WEB_ROOT?>/public/css/grid.css">
+    <link rel="stylesheet" href="<?=WEB_ROOT?>/public/css/main.css">
+    <link rel="stylesheet" href="<?=WEB_ROOT?>/public/css/responsive.css">
     <title><?=isset($web_title) ? $web_title : ''?></title>
     <link rel="canonical" href="http://icondenim.cf/" />
     <link rel="alternate" href="http://icondenim.cf/" hreflang="vi-vn" />
