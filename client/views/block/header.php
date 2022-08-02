@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="//theme.hstatic.net/1000360022/1000759577/14/favicon.png?v=554" type="image/png">
+    
+    <link rel="stylesheet" href="./public/css/base.css">
+    <link rel="stylesheet" href="./public/css/grid.css">
+    <link rel="stylesheet" href="./public/css/main.css">
+    <link rel="stylesheet" href="./public/css/responsive.css">
     <link rel="stylesheet" href="<?=WEB_ROOT?>/public/css/base.css">
     <link rel="stylesheet" href="<?=WEB_ROOT?>/public/css/grid.css">
     <link rel="stylesheet" href="<?=WEB_ROOT?>/public/css/main.css">
