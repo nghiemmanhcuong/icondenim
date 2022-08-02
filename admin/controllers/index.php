@@ -130,4 +130,7 @@ switch ($page) {
     case 'tra-loi-phan-hoi':
         handleImportServer('contact/answer.php','contact/answer.php','Trả lời liên hệ');
         break;
+    case 'info-shop':
+        handleImportServer('shop_info/index.php','shop_info/index.php','Thông tin shop');
+        break;
 }
