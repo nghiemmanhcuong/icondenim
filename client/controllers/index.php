@@ -41,7 +41,19 @@ switch ($folder) {
                 break;
         }
         break;
-        
+    case 'checkouts':
+        switch ($detail) {
+            case '':
+                handleImportClient('checkouts/index.php','checkouts/index.php','Thanh toán đơn hàng');
+                break;
+            case 'success':
+                handleImportClient('checkouts/success.php','','Đặt hàng thành công');
+                break;
+            default:
+                include_once('views/errors/404.php');
+                break;
+        }
+        break;
     case '':
         handleImportClient('home/index.php','home/index.php','ICON DENIM');
         break;
