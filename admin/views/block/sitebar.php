@@ -218,9 +218,9 @@
         <!-- end item -->
         <!-- item -->
         <li class="sitebar-nav-item">
-            <a href="?p=banners" class="sitebar-nav-link">
+            <a href="?p=slides" class="sitebar-nav-link">
                 <i class="bi bi-cart-check-fill"></i>
-                <span>Banners</span>
+                <span>Slides</span>
             </a>
         </li>
         <!-- end item -->
