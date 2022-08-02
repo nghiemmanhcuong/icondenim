@@ -375,3 +375,27 @@ function getAcountType($account_type){
         return 'Khách hàng thân thiết <i class="fa-solid fa-crown" style="color:orange"></i> (Đặc quyền ưu đãi giảm 10% khi mua hành nguyên giá)';
     }
 }
+
+function getTotalPriceCart ($products) {
+    $total_price = 0;
+    
+    if(!empty($products)){
+        foreach ($products as $item) {
+            $price = $item['product_price'] * $item['quantity'];
+            $total_price += $price;
+        }
+    }
+
+    return $total_price;
+}
+
+function getDiscountMember($point){
+
+    if($point > 150){
+        return 10;
+    }else if($point >= 60 && $point <= 150){
+        return 5;
+    }else if($point > 0 && $point < 60){
+        return 0;
+    }
+}
