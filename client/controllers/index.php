@@ -51,6 +51,9 @@ switch ($folder) {
     case 'products':
         handleImportClient('products/index.php','products/index.php');
         break;
+    case 'search':
+        handleImportClient('search/index.php','search/index.php');
+        break;
     default:
         include_once('views/errors/404.php');
         break;
