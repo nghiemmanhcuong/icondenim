@@ -54,6 +54,31 @@ switch ($folder) {
                 break;
         }
         break;
+    case 'pages':
+        switch ($detail) {
+            case 'chinh-sach-doi-tra':
+                handleImportClient('pages/exchange_guarantee.php','','Chính sách đổi trả');
+                break;
+            case 'membership':
+                handleImportClient('pages/membership.php','','Membership');
+                break;
+            case 'tra-cuu-don-hang':
+                handleImportClient('pages/order_lookup.php','pages/order_lookup.php','Tra cứu đơn hàng');
+                break;
+            case 'dia-chi-cua-hang':
+                handleImportClient('pages/store_address.php','','Địa chỉ cửa hàng');
+                break;
+            case 'chinh-sach-bao-mat':
+                handleImportClient('pages/security.php','','Chính sách bảo mật');
+                break;
+            case 'dieu-khoan-dich-vu':
+                handleImportClient('pages/service.php','','Điều khoản dịch vụ');
+                break;
+            default:
+                include_once('views/errors/404.php');
+                break;
+        }
+        break;
     case '':
         handleImportClient('home/index.php','home/index.php','ICON DENIM');
         break;
