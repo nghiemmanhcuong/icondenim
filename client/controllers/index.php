@@ -93,6 +93,9 @@ switch ($folder) {
     case 'cart':
         handleImportClient('cart/index.php','cart/index.php','Giỏ hàng');
         break;
+    case 'lien-he':
+        handleImportClient('contact/index.php','contact/index.php','Liên hệ với chúng tôi');
+        break;
     default:
         include_once('views/errors/404.php');
         break;
