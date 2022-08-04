@@ -12,7 +12,7 @@
                         <div class="contact-info-content">
                             <h5 class="contact-info-content-title">Trụ sở chính</h5>
                             <p class="contact-info-content-desc">
-                                12-12Bis, Đường CMT8, Phường Bến Thành, Quận 1, Tp. Hồ Chí Minh.
+                                Xuân Phương, Nam Từ Liêm, Hà Nội, Việt Nam
                             </p>
                         </div>
                     </div>
@@ -24,8 +24,8 @@
                         <div class="contact-info-content">
                             <h5 class="contact-info-content-title">Email</h5>
                             <p class="contact-info-content-desc">
-                                <a href="mailto:nghiemmanhcuong98@gmail.com">
-                                    nghiemmanhcuong98@gmail.com
+                                <a href="mailto:quangvcph18970@fpt.edu.vn">
+                                    quangvcph18970@fpt.edu.vn
                                 </a>
                             </p>
                         </div>
@@ -38,8 +38,8 @@
                         <div class="contact-info-content">
                             <h5 class="contact-info-content-title">Mua hàng online</h5>
                             <p class="contact-info-content-desc">
-                                <a href="tel:0987954221">
-                                    (+84)987.954.221
+                                <a href="tel:0974488396">
+                                    (+84)0974.488.396
                                 </a>
                             </p>
                         </div>
