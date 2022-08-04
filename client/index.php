@@ -17,7 +17,7 @@ define('WEB_ROOT',$web_root.$folder);
 define('IMG_ROOT',str_replace('client','uploads/',WEB_ROOT));
 define('SERVER_ROOT',str_replace('client','admin',WEB_ROOT));
 
-require_once('controller/index.php');
+require_once('controllers/index.php');
 
 ?>
 

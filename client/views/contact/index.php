@@ -12,7 +12,7 @@
                         <div class="contact-info-content">
                             <h5 class="contact-info-content-title">Trụ sở chính</h5>
                             <p class="contact-info-content-desc">
-                                Xuân Phương, Nam Từ Liêm, Hà Nội, Việt Nam
+                                <?= $shop_info['headquarters_address'] ?>
                             </p>
                         </div>
                     </div>
@@ -24,8 +24,8 @@
                         <div class="contact-info-content">
                             <h5 class="contact-info-content-title">Email</h5>
                             <p class="contact-info-content-desc">
-                                <a href="mailto:quangvcph18970@fpt.edu.vn">
-                                    quangvcph18970@fpt.edu.vn
+                                <a href="mailto:<?= $shop_info['email_contact'] ?>">
+                                    <?= $shop_info['email_contact'] ?>
                                 </a>
                             </p>
                         </div>
@@ -38,8 +38,8 @@
                         <div class="contact-info-content">
                             <h5 class="contact-info-content-title">Mua hàng online</h5>
                             <p class="contact-info-content-desc">
-                                <a href="tel:0974488396">
-                                    (+84)0974.488.396
+                                <a href="tel:<?= $shop_info['hotline'] ?>">
+                                    (+84)<?php substr("echo $shop_info[hotline]",0)?>
                                 </a>
                             </p>
                         </div>
@@ -52,8 +52,8 @@
                         <div class="contact-info-content">
                             <h5 class="contact-info-content-title">Chăm sóc khách hàng</h5>
                             <p class="contact-info-content-desc">
-                                <a href="mailto:cskh@icondenim.com">
-                                    cskh@icondenim.com
+                                <a href="mailto:<?= $shop_info['sales_consultant_phone'] ?>">
+                                    <?= $shop_info['sales_consultant_phone'] ?>
                                     <span>Thứ Hai đến Thứ Bảy, từ 8:00 đến 17:30</span>
                                 </a>
                             </p>
