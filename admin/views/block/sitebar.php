@@ -218,8 +218,8 @@
         <!-- end item -->
         <!-- item -->
         <li class="sitebar-nav-item">
-            <a href="?p=slides" class="sitebar-nav-link">
-                <i class="bi bi-cart-check-fill"></i>
+            <a href="?p=show-slides" class="sitebar-nav-link">
+            <i class="bi bi-file-slides"></i>
                 <span>Slides</span>
             </a>
         </li>
@@ -227,7 +227,7 @@
         <!-- item -->
         <li class="sitebar-nav-item">
             <a href="?p=thong-tin-shop" class="sitebar-nav-link">
-                <i class="bi bi-cart-check-fill"></i>
+            <i class="bi bi-info-square"></i>
                 <span>Thông tin shop</span>
             </a>
         </li>

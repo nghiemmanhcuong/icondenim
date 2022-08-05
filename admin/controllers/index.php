@@ -134,4 +134,16 @@ switch ($page) {
         handleImportServer('shop_info/index.php','shop_info/index.php','Thông tin shop');
         break;
 
+        case 'show-slides':
+            handleImportServer('slides/show.php','slides/show.php','Show banner');
+            break;
+        case 'slides':
+            handleImportServer('slides/add.php','slides/add.php','Thêm banner');
+            break;
+        case 'edit-slides':
+            handleImportServer('slides/edit.php','slides/edit.php','Sửa banner');
+            break;
+        case 'delete-slides':
+            handleImportServer('','slides/delete.php','Xóa banner');
+            break;
 }

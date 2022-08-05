@@ -1,6 +1,6 @@
 <div class="content">
     <form class="form-add" method="post" enctype="multipart/form-data" style="width:80%;">
-        <h3 class="text-center mb-3">Thêm banner mới</h3>
+        <h3 class="text-center mb-3">Sửa banner</h3>
         <?php
             if(isset($_GET['message'])) :     
         ?>
@@ -16,7 +16,7 @@
             <!-- width -->
             <div class="mb-2 col-">
                 <label class="form-label">Chiều rộng<span>*</span></label>
-                <input type="text" name="width" class="form-control" placeholder="Nhập chiều rộng...">
+                <input type="text" name="width" class="form-control" value="<?= $slide['width'] ?>">
                 <?php if(isset($errors['width'])) : ?>
                 <div class="form-error"><?=$errors['width']?></div>
                 <?php endif;?>
@@ -24,7 +24,7 @@
             <!-- height -->
             <div class="mb-2 col-12">
                 <label class="form-label">Chiều cao<span>*</span></label>
-                <input type="text" name="height" class="form-control" placeholder="Nhập chiều cao...">
+                <input type="text" name="height" class="form-control" value="<?= $slide['height'] ?>">
                 <?php if(isset($errors['height'])) : ?>
                 <div class="form-error"><?=$errors['height']?></div>
                 <?php endif;?>
@@ -33,9 +33,12 @@
             <div class="mb-2 col-">
                 <label class="form-label">Link<span>*</span></label>
                 <select name="link" class="form-select">
-                    <option value="">--Chọn--</option>
                     <?php foreach ($categories as $ct):?>
-                    <option value="<?=$ct['slug']?>"><?=$ct['name']?></option>
+                    <option 
+                        <?=
+                           $slide['link'] == $ct['slug'] ? 'selected' : '';
+                         ?> 
+                         value="<?=$ct['slug']?>"><?=$ct['name']?></option>
                     <?php endforeach;?>
                 </select>
                 <?php if(isset($errors['link'])) : ?>
@@ -49,18 +52,22 @@
                 <?php if(isset($errors['image'])) : ?>
                 <div class="form-error"><?=$errors['image']?></div>
                 <?php endif;?>
+                <img src="../uploads/<?=$slide['image']?>" width="50" alt="">
             </div>
             <!-- status -->
             <div class="mb-2 col-">
                 <label class="form-label">Status<span>*</span></label>
-                <input type="checkbox" name="status" id="status">
+                <input <?= $slide['status'] == 1 ? 'checked' : '' ?> type="checkbox" name="status" id="status">
                 <?php if(isset($errors['status'])) : ?>
                 <div class="form-error"><?=$errors['status']?></div>
                 <?php endif;?>
             </div>
         </div>
+
+        <input type="hidden" name="img" value="<?= $slide['image'] ?>">
+
         <div class="form-button mt-3">
-            <button type="submit" class="btn btn-primary">Thêm banner</button>
+            <button type="submit" class="btn btn-primary">Sửa banner</button>
         </div>
     </form>
 </div>
