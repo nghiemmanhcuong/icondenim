@@ -226,7 +226,7 @@
         <!-- end item -->
         <!-- item -->
         <li class="sitebar-nav-item">
-            <a href="?p=thong-tin-shop" class="sitebar-nav-link">
+            <a href="?p=info-shop" class="sitebar-nav-link">
             <i class="bi bi-info-square"></i>
                 <span>Thông tin shop</span>
             </a>

@@ -187,6 +187,8 @@ function getTotalSalesDay($date){
     $sql = "SELECT sum(total_price) as total_price FROM orders WHERE  year(created_at)=? AND month(created_at)=? AND day(created_at)=? AND status='Đã thanh toán'";
     $result = query($sql,[$year,$month,$day])->fetch(PDO::FETCH_ASSOC);
     return $result['total_price'];
+}
+// client
 
 function getSlugUrl() {
     if(isset($_SERVER['PATH_INFO'])){
@@ -203,7 +205,7 @@ function getSlugUrl() {
 }
 
 function handleImportClient($view=null, $model=null,$web_title=''){
-    // require_once('../core/variables.php');
+    require_once('../core/variables.php');
     $slug = getSlugUrl();
     if(!empty($model)){
         require_once('models/'.$model);
@@ -217,6 +219,14 @@ function handleImportClient($view=null, $model=null,$web_title=''){
     }
     include_once('views/block/cart.php');
     include_once('views/block/footer.php');
+}
+
+function getBlogCategory($category_id){
+    global $conn;
+    $sql = "SELECT name FROM blog_categories WHERE id=?";
+    $category = query($sql,[$category_id])->fetch(PDO::FETCH_ASSOC);
+    $category_name = $category['name'];
+    return $category_name;
 }
 
 function handleMenu($menu, $parent = 0, $is_sub = false){
@@ -243,12 +253,92 @@ function handleMenu($menu, $parent = 0, $is_sub = false){
         }
         echo '</ul>';
     }
+}
+
+function getWarehouse($product_id){
+    global $conn;
+    $colors = array();
+    $color_id = array();
+    $sizes = array();
+    $size_id = array();
+
+    $sql = "SELECT color,size FROM product_warehouse WHERE product_id=?";
+    $warehouse = query($sql,[$product_id]);
+
+    foreach ($warehouse as $item) {
+        $color_id[] = $item['color'];
+        $size_id[] = $item['size'];
+    }
+
+    $color_id = array_unique($color_id);
+    $size_id = array_unique($size_id);
+
+    foreach ($color_id as $id) {
+        $sql = "SELECT * FROM colors WHERE id=?";
+        $color = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
+        array_push($colors, $color);
+    }
+
+    foreach ($size_id as $id) {
+        $sql = "SELECT * FROM sizes WHERE id=?";
+        $size = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
+        array_push($sizes, $size);
+    }
+
+    return [
+        'color' => $colors,
+        'size' => $sizes,
+    ];
+}
 
 function getProductImages($product_id) {
     global $conn;
     $sql = "SELECT * FROM product_images WHERE product_id=?";
     $product_images = query($sql,[$product_id])->fetchall(PDO::FETCH_ASSOC);
     return $product_images;
+}
+
+function getColor($color_id) {
+    global $conn;
+    $sql = "SELECT name FROM colors WHERE id=?";
+    $color = query($sql,[$color_id])->fetch(PDO::FETCH_ASSOC);
+
+    return $color['name'];
+}
+
+function getSize($size_id) {
+    global $conn;
+    $sql = "SELECT name FROM sizes WHERE id=?";
+    $size = query($sql,[$size_id])->fetch(PDO::FETCH_ASSOC);
+
+    return $size['name'];
+}
+
+function getTotalPriceCart ($products) {
+    $total_price = 0;
+    
+    if(!empty($products)){
+        foreach ($products as $item) {
+            $price = $item['product_price'] * $item['quantity'];
+            $total_price += $price;
+        }
+    }
+
+    return $total_price;
+}
+
+function handleAssessorName($assessor_name){
+    $fristChar = mb_substr($assessor_name,0,1,'utf-8');
+    $fristChar = ucfirst($fristChar);
+    return $fristChar;
+}
+
+function getAnswerReviews($review_id) {
+    global $conn;
+    $sql = "SELECT * FROM product_review_answer WHERE product_review_id=?";
+    $product_review_answers = query($sql,[$review_id])->fetchAll(PDO::FETCH_ASSOC);
+
+    return $product_review_answers;
 }
 
 function getStarsNum($product_reviews) {
@@ -314,43 +404,25 @@ function getevaluate($product_id) {
     ];
 }
 
-function getWarehouse($product_id){
-    global $conn;
-    $colors = array();
-    $color_id = array();
-    $sizes = array();
-    $size_id = array();
-
-    $sql = "SELECT color,size FROM product_warehouse WHERE product_id=?";
-    $warehouse = query($sql,[$product_id]);
-
-    foreach ($warehouse as $item) {
-        $color_id[] = $item['color'];
-        $size_id[] = $item['size'];
+function getAcountType($account_type){
+    if($account_type == 'regular'){
+        return 'Thường <i class="fa-solid fa-user"></i>';
+    }else if($account_type == 'silver'){
+        return 'Bạc <i class="fa-solid fa-user-shield"></i> (Đặc quyền ưu đãi giảm 5% khi mua hành nguyên giá) ';
+    }else if($account_type == 'gold'){
+        return 'Khách hàng thân thiết <i class="fa-solid fa-crown" style="color:orange"></i> (Đặc quyền ưu đãi giảm 10% khi mua hành nguyên giá)';
     }
-
-    $color_id = array_unique($color_id);
-    $size_id = array_unique($size_id);
-
-    foreach ($color_id as $id) {
-        $sql = "SELECT * FROM colors WHERE id=?";
-        $color = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
-        array_push($colors, $color);
-    }
-
-    foreach ($size_id as $id) {
-        $sql = "SELECT * FROM sizes WHERE id=?";
-        $size = query($sql,[$id])->fetch(PDO::FETCH_ASSOC);
-        array_push($sizes, $size);
-    }
-
-    return [
-        'color' => $colors,
-        'size' => $sizes,
-    ];
-}
 }
 
+function getDiscountMember($point){
+
+    if($point > 150){
+        return 10;
+    }else if($point >= 60 && $point <= 150){
+        return 5;
+    }else if($point > 0 && $point < 60){
+        return 0;
+    }
 }
 
 function getSqlFilterSizeColor($size_id=null,$color_id=null){
@@ -364,38 +436,4 @@ function getSqlFilterSizeColor($size_id=null,$color_id=null){
     }
 
     return $sql_filter;
-} 
-
-function getAcountType($account_type){
-    if($account_type == 'regular'){
-        return 'Thường <i class="fa-solid fa-user"></i>';
-    }else if($account_type == 'silver'){
-        return 'Bạc <i class="fa-solid fa-user-shield"></i> (Đặc quyền ưu đãi giảm 5% khi mua hành nguyên giá) ';
-    }else if($account_type == 'gold'){
-        return 'Khách hàng thân thiết <i class="fa-solid fa-crown" style="color:orange"></i> (Đặc quyền ưu đãi giảm 10% khi mua hành nguyên giá)';
-    }
-}
-
-function getTotalPriceCart ($products) {
-    $total_price = 0;
-    
-    if(!empty($products)){
-        foreach ($products as $item) {
-            $price = $item['product_price'] * $item['quantity'];
-            $total_price += $price;
-        }
-    }
-
-    return $total_price;
-}
-
-function getDiscountMember($point){
-
-    if($point > 150){
-        return 10;
-    }else if($point >= 60 && $point <= 150){
-        return 5;
-    }else if($point > 0 && $point < 60){
-        return 0;
-    }
 }
