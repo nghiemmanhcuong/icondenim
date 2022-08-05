@@ -79,7 +79,7 @@ switch ($folder) {
                 break;
         }
         break;
-    case 'home':
+    case '':
         handleImportClient('home/index.php','home/index.php','ICON DENIM');
         break;
     case 'collections':
