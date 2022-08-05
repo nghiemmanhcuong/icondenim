@@ -2,6 +2,12 @@
     $sql = 'SELECT name,slug FROM categories';
     $categories = query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
+    if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM slides WHERE id = $id";
+        $slide = query($sql)->fetch(PDO::FETCH_ASSOC);
+    }
+
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors = array();
 
@@ -37,19 +43,20 @@
                 $image = $result['file'];
             }
         }else {
-            $errors['image'] = 'Vui lòng chọn ảnh';
+            $image = $_POST['img'];
         }
         
         if(empty($errors)) {
-            $sql = "INSERT INTO slides (width, height, link, status, image) VALUES (?,?,?,?,?)";
+            $sql = "UPDATE slides SET width=?, height=?, link=?, status=?, image=? WHERE id=?";
             $result = query($sql,[
                 $width,
                 $height,
                 $link,
                 $status,
-                $image
+                $image,
+                $id
             ]);
-        header("Location: add.php?message=Thêm dữ liệu thành công");
+            redirect('index.php?p=show-slides&msg=Sửa slide thành công');
         // die;
         }
     }
