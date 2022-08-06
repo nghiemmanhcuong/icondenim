@@ -1,3 +1,7 @@
+<?php
+$sql = "SELECT * FROM shop_info";
+$shop_info = query($sql)->fetch(PDO::FETCH_ASSOC);
+?>
 <main>
     <!-- hero slide -->
     <section class="hero-slide">
@@ -369,7 +373,7 @@
                             <h5 class="rule-info-title">HỖ TRỢ (09:00-22:00)</h5>
                             <p class="rule-info-desc">
                                 Inbox Fanpage ICON DENIM
-                                Hoặc gọi điện đến hotline 09.87.954.221
+                                Hoặc gọi điện đến hotline <?= $shop_info['hotline'] ?>
                             </p>
                         </div>
                     </div>

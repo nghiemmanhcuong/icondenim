@@ -1,3 +1,7 @@
+<?php
+$sql = "SELECT * FROM shop_info";
+$shop_info = query($sql)->fetch(PDO::FETCH_ASSOC);
+?>
 <div class="topbar">
     <div class="topbar-block">
         <p class="topbar-block-text active">Thanh toán khi nhận hàng</p>
@@ -18,8 +22,8 @@
                 </div>
             </div>
             <div class="topbar-block-hotline">
-                <a href="tel:0987954221">
-                    Hotline: 0987.954.221
+                <a href="tel:<?= $shop_info['hotline'] ?>">
+                    Hotline: <?= $shop_info['hotline'] ?>
                 </a>
             </div>
         </div>

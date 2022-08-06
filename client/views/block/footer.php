@@ -10,7 +10,7 @@
                     <h2 class="footer-title">HỆ THỐNG CỬA HÀNG</h2>
                     <div class="footer-link">
                         <h3>Flagship store 1:</h3>
-                        <p>12-12Bis, Đường CMT8, Phường Bến Thành, Quận 1, Tp. Hồ Chí Minh.</p>
+                        <p><?= $shop_info['headquarters_address'] ?></p>
                         <h3>Flagship store 2:</h3>
                         <p>484, Đường Lê Văn Sỹ, Phường 14, Quận.3, Tp. Hồ Chí Minh</p>
                         <h3>Flagship store 3:</h3>
@@ -29,10 +29,10 @@
                         <p>Giấy chứng nhận đăng ký doanh nghiệp do Sở Kế hoạch & Đầu tư Tp. Hồ Chí Minh cấp ngày
                             14/11/2018</p>
                         <h3>Email liên hệ:</h3>
-                        <p>cskh@icondenim.com</p>
+                        <p><?= $shop_info['	email_contact'] ?></p>
                         <h3>Liên hệ hợp tác:</h3>
                         <p>
-                            <a href="tel:0386336111">0386.336.111</a>
+                            <a href="tel:<?= $shop_info['sales_consultant_phone'] ?>"><?= $shop_info['sales_consultant_phone'] ?></a>
                         </p>
                         <br>
                         <h3>
@@ -77,8 +77,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="tel:0987954221">
-                                0987954221
+                            <a href="tel:<?= $shop_info['sales_consultant_phone'] ?>">
+                                <?= $shop_info['sales_consultant_phone'] ?>
                             </a>
                         </div>
                         <p>Phím 1 - Tất cả các ngày trong tuần</p>
@@ -95,8 +95,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="tel:0987954221">
-                                0987954221
+                            <a href="tel:<?= $shop_info['sales_consultant_phone'] ?>">
+                                <?= $shop_info['sales_consultant_phone'] ?>
                             </a>
                         </div>
                         <p>Phím 2 - Tất cả các ngày trong tuần</p>
