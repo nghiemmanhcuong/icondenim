@@ -113,6 +113,12 @@
                         Kích cỡ
                     </a>
                 </li>
+                <li class="sitebar-sub-nav-item">
+                    <a href="?p=binh-luan-san-pham" class="sitebar-sub-nav-link">
+                        <i class="bi bi-dot"></i>
+                        Bình luận sản phẩm
+                    </a>
+                </li>
             </ul>
         </li>
         <!-- end item -->

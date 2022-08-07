@@ -52,7 +52,6 @@
     <?php endif;?>
     <form action="index.php?p=xoa-san-pham" method="post" name="delete_product">
         <table class="table table-primary">
-
             <head>
                 <tr>
                     <th class="text-center border border-dark">STT</th>

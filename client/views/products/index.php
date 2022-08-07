@@ -203,6 +203,7 @@
             </div>
         </div>
         <!-- evaluate -->
+        <?php if(isset($_COOKIE['user_id'])):?>
         <div class="evaluate">
             <h3 class="evaluate-title">Đánh giá sản phẩm</h3>
             <div class="row">
@@ -440,6 +441,12 @@
                 </div>
             </div>
         </div>
+        <?php else:?>
+        <div style="margin-bottom:15px;">
+            Hãy đăng nhập trước khi đánh giá sản phẩm!!
+            <a href="<?=WEB_ROOT?>/account/dang-nhap" style="color:blue; text-decoration: underline;">Đăng nhập</a>
+        </div>
+        <?php endif;?>
         <!-- random product -->
         <div class="random_product">
             <div class="section-header">

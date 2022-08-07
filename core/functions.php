@@ -188,6 +188,13 @@ function getTotalSalesDay($date){
     $result = query($sql,[$year,$month,$day])->fetch(PDO::FETCH_ASSOC);
     return $result['total_price'];
 }
+
+function getTotalProductReviews($product_id){
+    $sql = "SELECT * FROM product_reviews WHERE product_id=?";
+    $total_reviews = query($sql,[$product_id])->rowCount();
+
+    return $total_reviews;
+}
 // client
 
 function getSlugUrl() {
