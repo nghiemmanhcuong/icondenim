@@ -1,5 +1,5 @@
 <div class="content">
-    <form class="form-add" method="post" enctype="multipart/form-data" style="width:60%;">
+    <form class="form-add" method="post" enctype="multipart/form-data" style="width:80%;">
         <h3 class="text-center mb-3">Sửa sản phẩm</h3>
         <a href="?p=danh-sach-san-pham" class="btn btn-success mb-3">
             <i class="bi bi-arrow-left"></i>
@@ -35,7 +35,7 @@
                 <?php endif;?>
             </div>
             <!-- old_price -->
-            <div class="mb-2 col-3">
+            <div class="mb-2 col-6">
                 <label class="form-label">Giá cũ</label>
                 <input type="text" name="old_price" class="form-control" placeholder="Nhập giá cũ..."
                     value="<?=$product['old_price']?>">
