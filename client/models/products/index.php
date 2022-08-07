@@ -40,7 +40,7 @@ if(isset($slug)) {
     $random_products = query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
     // get product reviews
-    $sql = "SELECT * FROM product_reviews WHERE product_id=?";
+    $sql = "SELECT * FROM product_reviews WHERE product_id=? AND status=1";
     $product_reviews = query($sql,[$product['id']])->fetchAll(PDO::FETCH_ASSOC);
 
     // update view

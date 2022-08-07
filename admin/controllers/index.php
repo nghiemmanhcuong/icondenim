@@ -145,4 +145,10 @@ switch ($page) {
     case 'delete-slides':
         handleImportServer('','slides/delete.php','Xóa banner');
         break;
+    case 'binh-luan-san-pham':
+        handleImportServer('product_comment/index.php','product_comment/read.php','Bình luận sản phẩm');
+        break;
+    case 'tat-ca-binh-luan':
+        handleImportServer('product_comment/detail.php','product_comment/detail.php','Tất cả bình luận');
+        break;
 }
