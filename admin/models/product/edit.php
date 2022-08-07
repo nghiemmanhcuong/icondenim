@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "UPDATE products 
                 SET name=?, category_id=?, price=?, old_price=?, 
                 description=?,image=?,updated_at=?,is_new=?,is_popular=?
-                WHERE id=?";
+                WHERE 1";
         $result = query($sql,[
             $name,
             $category,
@@ -81,11 +81,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $is_new,
             $is_popular,
             $id,
-        ]);
-
-        if($result->rowCount() > 0) {
-            redirect('index.php?p=danh-sach-san-pham&msg=Sửa sản phẩm thành công');
-        }
+        ]);   
+        redirect('index.php?p=info-shop&msg=Sửa thông tin thành công');      
     }
 }
 

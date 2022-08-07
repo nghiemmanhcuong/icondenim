@@ -30,7 +30,8 @@
             <input type="text" value="<?= $shop_info['email'] ?>" class="form-control" id="email">
         </div>
         <div class="form-button">
-            <button class="btn btn-primary">Sửa thông tin</button>
+            <button type="submit" class="btn btn-primary">Sửa thông tin</button>
+            <button type="reset" class="btn btn-info">Reset</button>
         </div>
     </form>
 </div>
