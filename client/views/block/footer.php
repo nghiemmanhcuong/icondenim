@@ -29,7 +29,7 @@
                         <p>Giấy chứng nhận đăng ký doanh nghiệp do Sở Kế hoạch & Đầu tư Tp. Hồ Chí Minh cấp ngày
                             14/11/2018</p>
                         <h3>Email liên hệ:</h3>
-                        <p><?= $shop_info['	email_contact'] ?></p>
+                        <p><?= $shop_info['email_contact'] ?></p>
                         <h3>Liên hệ hợp tác:</h3>
                         <p>
                             <a href="tel:<?= $shop_info['sales_consultant_phone'] ?>"><?= $shop_info['sales_consultant_phone'] ?></a>
