@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "UPDATE products 
                 SET name=?, category_id=?, price=?, old_price=?, 
                 description=?,image=?,updated_at=?,is_new=?,is_popular=?
-                WHERE 1";
+                WHERE id=?";
         $result = query($sql,[
             $name,
             $category,
