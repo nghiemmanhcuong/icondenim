@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "UPDATE products 
                 SET name=?, category_id=?, price=?, old_price=?, 
                 description=?,image=?,updated_at=?,is_new=?,is_popular=?
-                WHERE 1";
+                WHERE id=?";
         $result = query($sql,[
             $name,
             $category,
@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $is_popular,
             $id,
         ]);   
-        redirect('index.php?p=info-shop&msg=Sửa thông tin thành công');      
+        redirect('index.php?p=danh-sach-san-pham&msg=Sửa sản phẩm thành công');      
     }
 }
 
