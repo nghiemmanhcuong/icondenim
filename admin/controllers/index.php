@@ -11,6 +11,9 @@ switch ($page) {
         require_once('models/auth/login.php');
         include_once('views/auth/login.php');
         break;
+    case 'thong-tin-ca-nhan':
+        handleImportServer('auth/info.php','auth/info.php','Thông tin các nhân');
+        break;
     case 'quen-mat-khau':
         include_once('models/auth/forgot_password.php');
         include_once('views/auth/forgot_password.php');
@@ -22,6 +25,9 @@ switch ($page) {
     case 'xac-thuc':
         include_once('models/auth/validate_code.php');
         include_once('views/auth/validate_code.php');
+        break;
+    case 'dang-xuat':
+        include_once('models/auth/logout.php');
         break;
     case 'trang-chu':
         handleImportServer('block/home.php','block/home.php','Trang chủ');
