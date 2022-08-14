@@ -96,9 +96,6 @@ switch ($folder) {
     case 'lien-he':
         handleImportClient('contact/index.php','contact/index.php','Liên hệ với chúng tôi');
         break;
-    default:
-        include_once('views/errors/404.php');
-        break;
     case 'blogs':
         handleImportClient('blogs/index.php','blogs/index.php');
         break;
