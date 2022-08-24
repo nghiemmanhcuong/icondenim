@@ -22,7 +22,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $code = sha1(uniqid());
                 setcookie('code',$code,time() + 90, '/');
                 $_SESSION['forgot_pass_email'] = $email;
-                require_once('core/email/sendmail.php');
+                $content = 'Mã xác thực của bạn là: '.$code;
+                require_once('./admin/core/email/sendmail.php');
                 header('Location:'.WEB_ROOT.'/account/check-code');
             }
         }else {

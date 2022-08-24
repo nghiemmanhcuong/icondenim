@@ -73,6 +73,18 @@ if (navigationWrapper && navigationLogo) {
     });
 }
 
+var swiper = new Swiper('.hero-slide-swiper', {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    loopFillGroupWithBlank: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    duration: 15000,
+    speed: 1000,
+});
+
 // new product slide
 var swiper = new Swiper('.product-slide', {
     slidesPerView: 4,

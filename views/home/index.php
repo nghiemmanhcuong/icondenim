@@ -5,9 +5,25 @@ $shop_info = query($sql)->fetch(PDO::FETCH_ASSOC);
 <main>
     <!-- hero slide -->
     <section class="hero-slide">
+        <?php if(count($slides) > 1):?>
+        <div class="swiper hero-slide-swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($slides as $item):?>
+                <div class="swiper-slide">
+                    <a href="<?=WEB_ROOT?>/collections/<?= $item['link']?>">
+                        <img src="<?= IMG_ROOT.$item['image']?>" alt="hero silde" style="min-height:700px;max-height:<?= $item['height']?>px;width:<?= $item['width']?>px;min-width:100%;">
+                    </a>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <?php else:?>
         <a href="<?=WEB_ROOT?>/collections/san-pham-moi">
             <img src="public/images/hero-slide.webp" alt="hero silde">
         </a>
+        <?php endif;?>
     </section>
     <!-- category popular -->
     <section class="section">

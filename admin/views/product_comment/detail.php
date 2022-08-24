@@ -33,9 +33,9 @@
                     </td>
                     <td class="text-center border border-dark">
                         <!-- detail -->
-                        <a href="?p=chi-tiet-binh-luan&product_review_id=<?=$review['id']?>"
-                            class="btn btn-primary btn-small">
-                            Chi tiết
+                        <a href="?p=bo-kiem-duyet&product_review_id=<?=$review['id']?>&product_id=<?=$review['product_id']?>"
+                            class="btn btn-danger btn-small">
+                            Bỏ kiểm duyệt
                         </a>
                     </td>
                 </tr>

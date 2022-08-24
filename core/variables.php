@@ -4,6 +4,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 $dateNow = date('Y-m-d H:i:s');
 // filter product
 if(isset($_GET['p'])){
+    $filter_id_asc = '?p='.$_GET['p'].'&field=id&sort=ASC';
+    $filter_id_desc = '?p='.$_GET['p'].'&field=id&sort=DESC';
     $filter_price_asc = '?p='.$_GET['p'].'&field=price&sort=ASC';
     $filter_price_desc = '?p='.$_GET['p'].'&field=price&sort=DESC';
     $filter_name_asc = '?p='.$_GET['p'].'&field=name&sort=ASC';

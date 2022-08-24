@@ -22,6 +22,14 @@
         <!-- filter -->
         <select class="form-select mb-3" style="width:15%;" id="filter">
             <option value="<?='?p='.$_GET['p']?>">--Sắp xếp--</option>
+            <!-- filter price desc -->
+            <option <?= isset($field) && isset($sort) && $field == 'id' && $sort == 'DESC' ? 'selected' : ''?>
+                value="<?=isset($keyword) ? $filter_id_desc.'&keyword='.$keyword : $filter_id_desc?>">
+                Mới nhất</option>
+            <!-- filter price asc -->
+            <option <?= isset($field) && isset($sort) && $field == 'id' && $sort == 'ASC' ? 'selected' : ''?>
+                value="<?=isset($keyword) ? $filter_id_asc.'&keyword='.$keyword : $filter_id_asc?>">
+               Cũ nhất</option>
             <!-- filter price asc -->
             <option <?= isset($field) && isset($sort) && $field == 'price' && $sort == 'ASC' ? 'selected' : ''?>
                 value="<?=isset($keyword) ? $filter_price_asc.'&keyword='.$keyword : $filter_price_asc?>">
