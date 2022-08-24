@@ -14,8 +14,7 @@ if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
 }
 $folder = str_replace($_SERVER['DOCUMENT_ROOT'],'',DIR_ROOT);
 define('WEB_ROOT',$web_root.$folder);
-define('CLIENT_LINK',str_replace('admin','client',WEB_ROOT));
-
+define('CLIENT_LINK',str_replace('admin','',WEB_ROOT));
 
 // todo: require File index của controller
 require_once('./controllers/index.php');

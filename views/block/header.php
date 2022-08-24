@@ -31,6 +31,11 @@
     <meta name="robots" content="index,follow,noodp">
 
     <meta http-equiv="x-dns-prefetch-control" content="on">
+    <style>
+        .hero-slide-swiper > .swiper-button-prev::after, .swiper-button-next::after {
+            color:#fff !important;
+        }
+    </style>
 </head>
 
 <body>

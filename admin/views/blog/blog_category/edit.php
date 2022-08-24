@@ -1,5 +1,5 @@
 <div class="content">
-    <h3 class="text-center fw-bold">Sửa danh mục bào viết</h3>
+    <h3 class="text-center fw-bold">Sửa danh mục bài viết</h3>
     <a href="?p=danh-muc-bai-viet" class="btn btn-success mb-3">
         <i class="bi bi-arrow-left"></i>
         Quay lại

@@ -32,7 +32,8 @@
                         <p><?= $shop_info['email_contact'] ?></p>
                         <h3>Liên hệ hợp tác:</h3>
                         <p>
-                            <a href="tel:<?= $shop_info['sales_consultant_phone'] ?>"><?= $shop_info['sales_consultant_phone'] ?></a>
+                            <a
+                                href="tel:<?= $shop_info['sales_consultant_phone'] ?>"><?= $shop_info['sales_consultant_phone'] ?></a>
                         </p>
                         <br>
                         <h3>
@@ -167,6 +168,19 @@
 
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="<?=WEB_ROOT?>/public/js/main.js"></script>
+<script>
+var swiper = new Swiper('.hero-slide-swiper', {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    loopFillGroupWithBlank: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    duration: 15000,
+    speed: 1000,
+});
+</script>
 </body>
 
 </html>

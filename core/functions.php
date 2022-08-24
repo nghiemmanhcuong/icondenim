@@ -212,7 +212,7 @@ function getSlugUrl() {
 }
 
 function handleImportClient($view=null, $model=null,$web_title=''){
-    require_once('../core/variables.php');
+    require_once('core/variables.php');
     $slug = getSlugUrl();
     if(!empty($model)){
         require_once('models/'.$model);

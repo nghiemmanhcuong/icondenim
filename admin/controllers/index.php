@@ -157,4 +157,6 @@ switch ($page) {
     case 'tat-ca-binh-luan':
         handleImportServer('product_comment/detail.php','product_comment/detail.php','Tất cả bình luận');
         break;
+    case 'bo-kiem-duyet':
+        handleImportServer('','product_comment/cancel_censorship.php','');
 }

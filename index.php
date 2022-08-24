@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once('../core/db_conn.php');
-require_once('../core/functions.php');
+require_once('core/db_conn.php');
+require_once('core/functions.php');
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
@@ -22,8 +22,8 @@ if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
 }
 $folder = str_replace($_SERVER['DOCUMENT_ROOT'],'',DIR_ROOT);
 define('WEB_ROOT',$web_root.$folder);
-define('IMG_ROOT',str_replace('client','uploads/',WEB_ROOT));
-define('SERVER_ROOT',str_replace('client','admin',WEB_ROOT));
+define('IMG_ROOT',WEB_ROOT.'/uploads/');
+define('SERVER_ROOT',WEB_ROOT.'/admin/');
 
 require_once('controllers/index.php');
 

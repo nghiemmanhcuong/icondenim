@@ -1,4 +1,8 @@
 <?php
+// get slides
+$sql = "SELECT * FROM slides WHERE status=1";
+$slides = query($sql)->fetchAll(PDO::FETCH_ASSOC); 
+
 // get popular categories
 $sql = "SELECT name,slug,image FROM categories WHERE is_popular=?";
 $popular_categories = query($sql,[1])->fetchAll();
